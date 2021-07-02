@@ -4,12 +4,12 @@ import java.util.List;
 
 import com.nurullahdemirci.HrmsBackend.core.utilities.results.DataResult;
 import com.nurullahdemirci.HrmsBackend.core.utilities.results.Result;
-import com.nurullahdemirci.HrmsBackend.entities.concretes.VerificationCodeEmployer;
+import com.nurullahdemirci.HrmsBackend.entities.concretes.Country;
 
-public interface VerificationCodeEmployerService {
-
-	DataResult<List<VerificationCodeEmployer>> getAll();
+public interface CountryService {
 	
-	Result send(Integer employerUserId);
+	Result add(Country country);
+	
+	DataResult<List<Country>> getAll();
 	
 }

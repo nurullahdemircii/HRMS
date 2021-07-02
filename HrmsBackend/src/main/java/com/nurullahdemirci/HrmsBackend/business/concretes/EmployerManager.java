@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.google.common.base.Strings;
 import com.nurullahdemirci.HrmsBackend.business.abstracts.EmployerService;
-import com.nurullahdemirci.HrmsBackend.business.abstracts.VerificationCodeEmployerService;
+import com.nurullahdemirci.HrmsBackend.business.abstracts.VerificationCodeInEmployerService;
 import com.nurullahdemirci.HrmsBackend.core.utilities.adapters.abstracts.EmailControlService;
 import com.nurullahdemirci.HrmsBackend.core.utilities.results.AllDataResult;
 import com.nurullahdemirci.HrmsBackend.core.utilities.results.DataResult;
@@ -22,13 +22,16 @@ import com.nurullahdemirci.HrmsBackend.entities.concretes.Employer;
 public class EmployerManager implements EmployerService{
 
 	private EmployerDao employerDao;
-	private VerificationCodeEmployerService verificationCodeEmployerService;
+	private VerificationCodeInEmployerService verificationCodeInEmployerService;
 	private EmailControlService emailControlService;
 	
 	@Autowired
-	EmployerManager(EmployerDao employerDao, VerificationCodeEmployerService verificationCodeEmployerService, EmailControlService emailControlService){
+	EmployerManager(
+			EmployerDao employerDao, 
+			VerificationCodeInEmployerService verificationCodeInEmployerService, 
+			EmailControlService emailControlService){
 		this.employerDao = employerDao;
-		this.verificationCodeEmployerService = verificationCodeEmployerService;
+		this.verificationCodeInEmployerService = verificationCodeInEmployerService;
 		this.emailControlService = emailControlService;
 	}
 
@@ -116,7 +119,7 @@ public class EmployerManager implements EmployerService{
 
 	@Override
 	public Boolean emailVerification(Integer employerUserId) {
-		if(this.verificationCodeEmployerService.send(employerUserId).getSuccess())
+		if(this.verificationCodeInEmployerService.send(employerUserId).getSuccess())
 			return true;
 		else
 			return false;

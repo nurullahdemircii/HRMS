@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.google.common.base.Strings;
 import com.nurullahdemirci.HrmsBackend.business.abstracts.CandidateService;
-import com.nurullahdemirci.HrmsBackend.business.abstracts.VerificationCodeCandidateService;
+import com.nurullahdemirci.HrmsBackend.business.abstracts.VerificationCodeInCandidateService;
 import com.nurullahdemirci.HrmsBackend.core.utilities.adapters.abstracts.EmailControlService;
 import com.nurullahdemirci.HrmsBackend.core.utilities.adapters.abstracts.MernisService;
 import com.nurullahdemirci.HrmsBackend.core.utilities.results.AllDataResult;
@@ -23,14 +23,19 @@ import com.nurullahdemirci.HrmsBackend.entities.concretes.Candidate;
 public class CandidateManager implements CandidateService{
 
 	private CandidateDao candidateDao;
-	private VerificationCodeCandidateService verificationCodeCandidateService;
+	private VerificationCodeInCandidateService verificationCodeInCandidateService;
 	private MernisService mernisService;
 	private EmailControlService emailControlService;
 	
 	@Autowired
-	CandidateManager(CandidateDao candidateDao, VerificationCodeCandidateService verificationCodeCandidateService, MernisService mernisService, EmailControlService emailControlService){
+	public CandidateManager(
+			CandidateDao candidateDao, 
+			VerificationCodeInCandidateService verificationCodeInCandidateService, 
+			MernisService mernisService, 
+			EmailControlService emailControlService){
+		super();
 		this.candidateDao = candidateDao;
-		this.verificationCodeCandidateService = verificationCodeCandidateService;
+		this.verificationCodeInCandidateService = verificationCodeInCandidateService;
 		this.mernisService = mernisService;
 		this.emailControlService = emailControlService;
 	}
@@ -147,7 +152,7 @@ public class CandidateManager implements CandidateService{
 
 	@Override
 	public Boolean emailVerification(Integer candidateUserId) {
-		if(this.verificationCodeCandidateService.send(candidateUserId).getSuccess())
+		if(this.verificationCodeInCandidateService.send(candidateUserId).getSuccess())
 			return true;
 		else
 			return false;

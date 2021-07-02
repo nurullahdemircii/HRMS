@@ -1,11 +1,17 @@
 package com.nurullahdemirci.HrmsBackend.entities.concretes;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -18,34 +24,33 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Entity
+@Entity(name = "City")
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "verification_codes")
+@Table(name="cities")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class VerificationCode {
+public class City {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private Integer id;
+	@Column(name="city_id")
+	private Integer cityId;
 	
 	@NotBlank
 	@NotNull
-	@Column(name = "code", length=6)
-	private String code;
+	@Column(name="city_name", length=64, nullable = false)
+	private String cityName;
 	
-	@NotBlank
 	@NotNull
-	@Column(name = "is_verified")
-	private Boolean isVerified;
-
+	@Column(name="plate_code")
+	private Short plateCode;
+	
+	@ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.MERGE)
+	@JoinColumn(name="country_id")
+	private Country country;
+	
 	@JsonIgnore
-	@OneToOne(mappedBy="verificationCodeIE")
-	private VerificationCodeInEmployer verificationCodeInEmployer;
-
-	@JsonIgnore
-	@OneToOne(mappedBy="verificationCodeIC")
-	private VerificationCodeInCandidate verificationCodeInCandidate;
-		
+	@ManyToMany(mappedBy="cities")
+	private Set<JobAdvertisement> jobAdvertisements;
+	
 }
