@@ -1,0 +1,39 @@
+package com.nurullahdemirci.HrmsBackend.api.controllers;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+
+import com.nurullahdemirci.HrmsBackend.core.utilities.results.DataResult;
+import com.nurullahdemirci.HrmsBackend.core.utilities.results.Result;
+import com.nurullahdemirci.HrmsBackend.business.abstracts.SchoolService;
+import com.nurullahdemirci.HrmsBackend.entities.concretes.School;
+
+@RestController
+@RequestMapping("/api/schools")
+public class SchoolsController {
+	
+	private SchoolService schoolService;
+
+	@Autowired
+	public SchoolsController(SchoolService schoolService) {
+		this.schoolService = schoolService;
+	}
+	
+	@GetMapping("/getall")
+	public DataResult<List<School>> getAll(){
+		return this.schoolService.getAll();
+	}
+	
+	@PostMapping("/add")
+	public Result add(@RequestBody School school) {
+		return this.schoolService.create(school);
+	}
+	
+}
