@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
@@ -52,5 +53,9 @@ public class Candidate extends User{
 	@JsonIgnore
 	@OneToMany(mappedBy="candidate")
 	private List<VerificationCodeInCandidate> verificationCodeInCandidates;
+	
+	@JsonIgnore
+	@OneToOne(mappedBy="candidate")
+	private Resume resume;
 
 }
