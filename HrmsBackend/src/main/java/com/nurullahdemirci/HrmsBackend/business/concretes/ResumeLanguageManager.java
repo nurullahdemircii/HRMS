@@ -12,6 +12,7 @@ import com.nurullahdemirci.HrmsBackend.core.utilities.results.SuccessDataResult;
 import com.nurullahdemirci.HrmsBackend.core.utilities.results.SuccessResult;
 import com.nurullahdemirci.HrmsBackend.dataAccess.abstracts.ResumeLanguageDao;
 import com.nurullahdemirci.HrmsBackend.entities.concretes.ResumeLanguage;
+import com.nurullahdemirci.HrmsBackend.entities.dtos.ResumeLanguageDto;
 
 @Service
 public class ResumeLanguageManager implements ResumeLanguageService {
@@ -33,6 +34,11 @@ public class ResumeLanguageManager implements ResumeLanguageService {
 	public Result create(ResumeLanguage resumeLanguage) {
 		this.resumeLanguageDao.save(resumeLanguage);
 		return new SuccessResult("");
+	}
+
+	@Override
+	public DataResult<List<ResumeLanguageDto>> getByResumeLanguageInCandidateId(Integer candidateId) {
+		return new SuccessDataResult<List<ResumeLanguageDto>>(this.resumeLanguageDao.getByResumeLanguageInCandidateId(candidateId), "");
 	}
 
 }

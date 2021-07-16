@@ -12,6 +12,7 @@ import com.nurullahdemirci.HrmsBackend.core.utilities.results.SuccessDataResult;
 import com.nurullahdemirci.HrmsBackend.core.utilities.results.SuccessResult;
 import com.nurullahdemirci.HrmsBackend.dataAccess.abstracts.ResumeTechnologyDao;
 import com.nurullahdemirci.HrmsBackend.entities.concretes.ResumeTechnology;
+import com.nurullahdemirci.HrmsBackend.entities.dtos.ResumeTechnologyDto;
 
 @Service
 public class ResumeTechnologyManager implements ResumeTechnologyService {
@@ -33,6 +34,11 @@ public class ResumeTechnologyManager implements ResumeTechnologyService {
 	public Result create(ResumeTechnology resumeTechnology) {
 		this.resumeTechnologyDao.save(resumeTechnology);
 		return new SuccessResult("");
+	}
+
+	@Override
+	public DataResult<List<ResumeTechnologyDto>> getByResumeTechnologyInCandidateId(Integer candidateId) {
+		return new SuccessDataResult<List<ResumeTechnologyDto>>(this.resumeTechnologyDao.getByResumeTechnologyInCandidateId(candidateId), "");
 	}
 
 }

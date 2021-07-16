@@ -38,6 +38,9 @@ public class Resume {
 	@Column(name = "image")
 	private String image;
 	
+	@Column(name = "resume_description")
+	private String resumeDescription;
+	
 	@Column(name = "created_at")
 	private LocalDate createdAt;
 	

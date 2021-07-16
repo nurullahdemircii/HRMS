@@ -40,5 +40,10 @@ public class EducationManager implements EducationService {
 	public DataResult<List<EducationDto>> getAllEducationsWithCandidateOrderByGraduationDate() {
 		return new SuccessDataResult<List<EducationDto>>(this.educationDao.getAllEducationsWithCandidateOrderByGraduationDate());
 	}
+
+	@Override
+	public DataResult<List<EducationDto>> getByEducationInCandidateId(Integer candidateId) {
+		return new SuccessDataResult<List<EducationDto>>(this.educationDao.getByEducationInCandidateId(candidateId), "");
+	}
 	
 }

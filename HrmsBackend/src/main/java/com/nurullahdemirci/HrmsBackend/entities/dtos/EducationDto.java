@@ -11,12 +11,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class EducationDto {
 	
-	private Integer id;
-	
-	private String firstName;
-	
-	private String lastName;
-	
 	private String schoolType;
 	
 	private String branch;

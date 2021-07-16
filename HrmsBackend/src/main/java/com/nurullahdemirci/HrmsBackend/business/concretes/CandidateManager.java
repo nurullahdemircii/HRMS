@@ -18,6 +18,7 @@ import com.nurullahdemirci.HrmsBackend.core.utilities.results.SuccessDataResult;
 import com.nurullahdemirci.HrmsBackend.core.utilities.results.SuccessResult;
 import com.nurullahdemirci.HrmsBackend.dataAccess.abstracts.CandidateDao;
 import com.nurullahdemirci.HrmsBackend.entities.concretes.Candidate;
+import com.nurullahdemirci.HrmsBackend.entities.dtos.CandidateDto;
 
 @Service
 public class CandidateManager implements CandidateService{
@@ -156,6 +157,16 @@ public class CandidateManager implements CandidateService{
 			return true;
 		else
 			return false;
+	}
+
+	@Override
+	public DataResult<Candidate> getById(Integer candidateId) {
+		return new SuccessDataResult<Candidate>(candidateDao.getById(candidateId));
+	}
+
+	@Override
+	public DataResult<CandidateDto> getByCandidateDtoId(Integer candidateId) {
+		return new SuccessDataResult<CandidateDto>(this.candidateDao.getByCandidateDtoId(candidateId), "");
 	}
 
 }

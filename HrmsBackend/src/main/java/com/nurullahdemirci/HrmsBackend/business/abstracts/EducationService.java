@@ -14,5 +14,7 @@ public interface EducationService {
 	Result create(Education education);
 	
 	DataResult<List<EducationDto>> getAllEducationsWithCandidateOrderByGraduationDate();
+	
+	DataResult<List<EducationDto>> getByEducationInCandidateId(Integer candidateId);
 
 }

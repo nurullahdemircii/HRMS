@@ -42,9 +42,9 @@ public class ResumesController {
 		return ResponseEntity.ok(this.resumeService.create(resume));
 	}
 	
-	@GetMapping(value = "/getall_resume_in_candidate")
-	public ResponseEntity<?> getAllResumeInCandidate(@RequestParam("candidateId") Integer candidateId){
-		return ResponseEntity.ok(this.resumeService.getAllResumeInCandidate(candidateId));
+	@GetMapping(value = "/getall_details_by_candidate")
+	public ResponseEntity<?> getByCandidateIdResumeDetails(@RequestParam("candidateId") Integer candidateId){
+		return ResponseEntity.ok(this.resumeService.getAllResumeDetailsByCandidateId(candidateId));
 	}
 	
 	@ExceptionHandler(MethodArgumentNotValidException.class)

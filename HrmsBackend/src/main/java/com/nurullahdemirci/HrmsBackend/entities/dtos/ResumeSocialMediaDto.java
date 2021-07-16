@@ -1,7 +1,5 @@
 package com.nurullahdemirci.HrmsBackend.entities.dtos;
 
-import java.time.LocalDate;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,14 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ExperienceDto {
-
-	private String companyName;
+public class ResumeSocialMediaDto {
 	
-	private String position;
+	private String socialMediaName;
 	
-	private LocalDate startDate;
-	
-	private LocalDate leaveDate;
+	private String socialMediaUrl;
 	
 }

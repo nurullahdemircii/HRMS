@@ -30,7 +30,7 @@ public class ResumeSocialMedia {
 	private Integer id;
 	
 	@Column(name = "url")
-	private Integer url;
+	private String url;
 	
 	@ManyToOne
 	@JoinColumn(name = "social_id")

@@ -13,6 +13,8 @@ public interface ResumeService {
 	
 	Result create(Resume resume);
 	
-	DataResult<List<ResumeDto>> getAllResumeInCandidate(Integer candidateId);
+	DataResult<List<Resume>> getById(Integer candidateId);
+	
+	DataResult<ResumeDto> getAllResumeDetailsByCandidateId(Integer candidateId);
 	
 }

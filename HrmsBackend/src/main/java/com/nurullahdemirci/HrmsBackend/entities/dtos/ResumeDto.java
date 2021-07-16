@@ -1,6 +1,7 @@
 package com.nurullahdemirci.HrmsBackend.entities.dtos;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,22 +14,22 @@ public class ResumeDto {
 
 	private Integer id;
 	
-	private String firstName;
-	
-	private String lastName;
+	private CandidateDto candidateDto;
 	
 	private String image;
 	
-	private String technologyName;
+	private String resumeDescription;
 	
-	private String schoolType;
+	private LocalDate createdAt;
 	
-	private String branch;
+	private List<EducationDto> educationDtos;
+
+	private List<ExperienceDto> experienceDtos;
 	
-	private String school;
+	private List<ResumeTechnologyDto> resumeTechnologyDtos;
 	
-	private LocalDate startDate;
+	private List<ResumeLanguageDto> resumeLanguageDtos;
 	
-	private LocalDate graduationDate;
+	private List<ResumeSocialMediaDto> resumeSocialMediaDtos;
 	
 }

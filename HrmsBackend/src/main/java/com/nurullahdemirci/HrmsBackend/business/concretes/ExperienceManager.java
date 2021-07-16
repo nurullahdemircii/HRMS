@@ -12,6 +12,7 @@ import com.nurullahdemirci.HrmsBackend.core.utilities.results.SuccessDataResult;
 import com.nurullahdemirci.HrmsBackend.core.utilities.results.SuccessResult;
 import com.nurullahdemirci.HrmsBackend.dataAccess.abstracts.ExperienceDao;
 import com.nurullahdemirci.HrmsBackend.entities.concretes.Experience;
+import com.nurullahdemirci.HrmsBackend.entities.dtos.ExperienceDto;
 
 @Service
 public class ExperienceManager implements ExperienceService {
@@ -33,6 +34,11 @@ private ExperienceDao experienceDao;
 	@Override
 	public DataResult<List<Experience>> getAll() {
 		return new SuccessDataResult<List<Experience>>(this.experienceDao.findAll(), "");
+	}
+
+	@Override
+	public DataResult<List<ExperienceDto>> getByExperienceInCandidateId(Integer candidateId) {
+		return new SuccessDataResult<List<ExperienceDto>>(this.experienceDao.getByExperienceInCandidateId(candidateId), "");
 	}
 	
 }

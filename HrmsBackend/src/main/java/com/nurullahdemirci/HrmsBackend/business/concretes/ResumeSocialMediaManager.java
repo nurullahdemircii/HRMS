@@ -12,6 +12,7 @@ import com.nurullahdemirci.HrmsBackend.core.utilities.results.SuccessDataResult;
 import com.nurullahdemirci.HrmsBackend.core.utilities.results.SuccessResult;
 import com.nurullahdemirci.HrmsBackend.dataAccess.abstracts.ResumeSocialMediaDao;
 import com.nurullahdemirci.HrmsBackend.entities.concretes.ResumeSocialMedia;
+import com.nurullahdemirci.HrmsBackend.entities.dtos.ResumeSocialMediaDto;
 
 @Service
 public class ResumeSocialMediaManager implements ResumeSocialMediaService {
@@ -33,6 +34,11 @@ public class ResumeSocialMediaManager implements ResumeSocialMediaService {
 	public Result create(ResumeSocialMedia resumeSocialMedia) {
 		this.resumeSocialMediaDao.save(resumeSocialMedia);
 		return new SuccessResult("");
+	}
+
+	@Override
+	public DataResult<List<ResumeSocialMediaDto>> getByResumeSocialMediaInCandidateId(Integer candidateId) {
+		return new SuccessDataResult<List<ResumeSocialMediaDto>>(this.resumeSocialMediaDao.getByResumeSocialMediaInCandidateId(candidateId), "");
 	}
 	
 }
